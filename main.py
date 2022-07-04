@@ -9,7 +9,7 @@ def create_plan_2(tool):
     planName = input("任务名：")
     startTime = input("开始时间（2020-01-02）:")
     listNums = int(input("章节数目："))
-    tool.add_plan(planName=planName, startTime=startTime, listName=listNums, listNums=8)
+    tool.add_plan(planName=planName, startTime=startTime, listName="章", listNums=listNums)
     print("添加成功！")
 
 
@@ -64,7 +64,7 @@ def delete_list_6(tool):
     print("删除成功！")
 
 
-def look_plan_7():
+def look_plan_7(tool):
     plan_name = input("任务名称:")
     tool.look_plan(planName=plan_name)
 
