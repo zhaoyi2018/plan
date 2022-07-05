@@ -52,15 +52,15 @@ def forward_plan_4(tool):
 
 def insert_list_5(tool):
     plan_name = input("任务名称:")
-    list_num = int("添加章节数:")
-    tool.insert_list(plan_name=plan_name, listNum=list_num)
+    list_num = int(input("添加章节数:"))
+    tool.insert_list(planName=plan_name, listNum=list_num)
     print("添加成功！")
 
 
 def delete_list_6(tool):
     plan_name = input("任务名称:")
-    list_num = int("删除章节数:")
-    tool.delete_list(plan_name=plan_name, listNum=list_num)
+    list_num = int(input("删除章节数:"))
+    tool.delete_list(planName=plan_name, listNum=list_num)
     print("删除成功！")
 
 
