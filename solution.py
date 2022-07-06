@@ -9,17 +9,17 @@ from datetime import datetime
 class Solution:
 
     def save_plan(self, plan):
-        save_path = open("{}.pkl".format(plan.planName), "wb")
+        save_path = open("list/{}.pkl".format(plan.planName), "wb")
         strData = pickle.dumps(plan)
         save_path.write(strData)
         save_path.close()
 
     def read_plan(self, planName):
-        with open("{}.pkl".format(planName), "rb") as file:
+        with open("list/{}.pkl".format(planName), "rb") as file:
             return pickle.loads(file.read())
 
     def delete_plan(self, planName):
-        path = "{}.pkl".format(planName)
+        path = "list/{}.pkl".format(planName)
         if os.path.exists(path):
             os.remove(path)
         else:
