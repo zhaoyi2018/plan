@@ -1,7 +1,6 @@
 # coding=utf-8
 
 from solution import Solution
-from plan import Plan
 
 
 def create_plan_2(tool):

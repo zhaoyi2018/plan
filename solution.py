@@ -26,7 +26,7 @@ class Solution:
             print("no such plan:{}".path)
 
     def get_all_plan(self):
-        return [i[:-4] for i in os.listdir("./") if ".pkl" in i]
+        return [i[:-4] for i in os.listdir("list/") if ".pkl" in i]
 
     def today_all_task(self):
         all_plan = self.get_all_plan()
