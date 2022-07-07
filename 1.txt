@@ -1,0 +1,8 @@
+1.txt
+list
+main.py
+plan.py
+plan.pyc
+__pycache__
+solution.py
+solution.pyc
