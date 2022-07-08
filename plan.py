@@ -12,18 +12,25 @@ class Plan:
         self.dayList = dayList
         self.listNums = listNums
         self.time = [0, 1, 5, 7, 15, 25, 32]
-        self.arr = [[] for i in range(7)]
+        self.arr = [[] for _ in range(7)]
         self.get_plan()
 
     def get_plan(self):
-        for i in range(1, self.listNums // self.dayList + 1):
-            for j in range(1, 8):
+        for i in range(1, self.listNums // self.dayList + 1):  # list个数
+            for j in range(1, 8):  # 复习周期
                 self.arr[j - 1].append(i + self.time[j - 1] - 1)
 
     def add_list(self, list_num):
-        for i in range(self.listNums // self.dayList + 1, self.listNums // self.dayList + 1 + list_num):
-            for j in range(1, 8):
-                self.arr[j - 1].append(self.arr[j - 1][-1] + 1)
+        # 判断今天与计划创建日期的差数
+        diff_days = (datetime.now() - self.startTime).days
+        if diff_days <= self.arr[0][-1]:
+            for _ in range(list_num):
+                for j in range(1, 8):
+                    self.arr[j - 1].append(self.arr[j - 1][-1] + 1)
+        else:
+            for i in range(list_num):
+                for j in range(1, 8):
+                    self.arr[j - 1].append(diff_days + i + self.time[j - 1])
         self.listNums += list_num
 
     def delete_list(self, list_num):
