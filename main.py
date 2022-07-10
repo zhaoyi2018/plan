@@ -91,7 +91,8 @@ if __name__ == "__main__":
             print("退出成功！")
             break
         elif num == 1:
-            tool.today_all_task()
+            diff = int(input("是否需要偏移（天）："))
+            tool.today_all_task(diff)
         elif num == 2:
             create_plan_2(tool)
         elif num == 3:

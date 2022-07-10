@@ -28,11 +28,14 @@ class Solution:
     def get_all_plan(self):
         return [i[:-4] for i in os.listdir("list/") if ".pkl" in i]
 
-    def today_all_task(self):
+    def today_all_task(self, diff=None):
         all_plan = self.get_all_plan()
         for i in all_plan:
             plan = self.read_plan(i)
-            plan.get_look()
+            if diff:
+                plan.get_look(diff_day=diff)
+            else:
+                plan.get_look()
 
     def add_plan(self, planName='Plan', startTime=str(datetime.today()).split(" ")[0], listName="plan", dayList=1,
                  listNums=7):

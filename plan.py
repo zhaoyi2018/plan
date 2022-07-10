@@ -75,12 +75,12 @@ class Plan:
         print(self.listNums)
         print(self.arr)
 
-    def get_look(self):
+    def get_look(self, diff_day=0):
         '''
         今日计划
         '''
         # 计算差额天数
-        nowTime = (datetime.now() - self.startTime).days
+        nowTime = (datetime.now() - self.startTime).days + diff_day
 
         # 找到目标任务
         plan_arr = []
