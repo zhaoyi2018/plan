@@ -8,25 +8,28 @@ from datetime import datetime
 
 class Solution:
 
+    def __init__(self):
+        self.file_path = os.path.dirname(os.path.realpath(__file__))
+
     def save_plan(self, plan):
-        save_path = open("list/{}.pkl".format(plan.planName), "wb")
+        save_path = open(self.file_path + "/list/{}.pkl".format(plan.planName), "wb")
         strData = pickle.dumps(plan)
         save_path.write(strData)
         save_path.close()
 
     def read_plan(self, planName):
-        with open("list/{}.pkl".format(planName), "rb") as file:
+        with open(self.file_path + "/list/{}.pkl".format(planName), "rb") as file:
             return pickle.loads(file.read())
 
     def delete_plan(self, planName):
-        path = "list/{}.pkl".format(planName)
+        path = self.file_path + "/list/{}.pkl".format(planName)
         if os.path.exists(path):
             os.remove(path)
         else:
             print("no such plan:{}".path)
 
     def get_all_plan(self):
-        return [i[:-4] for i in os.listdir("list/") if ".pkl" in i]
+        return [i[:-4] for i in os.listdir(self.file_path + "/list/") if ".pkl" in i]
 
     def today_all_task(self, diff=None):
         all_plan = self.get_all_plan()
