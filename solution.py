@@ -33,6 +33,7 @@ class Solution:
 
     def today_all_task(self, diff=None):
         all_plan = self.get_all_plan()
+        print("时间点：", datetime.now())
         for i in all_plan:
             plan = self.read_plan(i)
             if diff:

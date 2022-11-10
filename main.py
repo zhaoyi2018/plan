@@ -73,6 +73,7 @@ def look_plan_7(tool):
 def print_menu():
     # 主菜单栏
     print("*" * 20)
+    print("--- 请再慢一点，做一点！ ----")
     print("1. 查询任务")
     print("2. 创建任务")
     print("3. 推迟任务")
