@@ -7,7 +7,8 @@ class Plan:
 
     def __init__(self, planName, startTime, listName, dayList, listNums):
         self.planName = planName
-        self.startTime = datetime(*tuple([int(i) for i in startTime.split("-")]))
+        self.startTime = datetime(
+            *tuple([int(i) for i in startTime.split("-")]))
         self.listName = listName
         self.dayList = dayList
         self.listNums = listNums
@@ -93,4 +94,3 @@ class Plan:
         print("{}，今日需完成目标:".format(self.planName))
         for i in range(len(plan_arr)):
             print("{} {}".format(self.listName, plan_arr[i]))
-
