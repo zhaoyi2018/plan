@@ -1,14 +1,14 @@
 # coding=utf-8
 
-from solution import Solution
+from backend.solution import Solution
 
 
 def create_plan_2(tool):
     print("请按要求，依次输入：")
-    planName = input("任务名：")
-    startTime = input("开始时间（2020-01-02）:")
-    listNums = int(input("章节数目："))
-    tool.add_plan(planName=planName, startTime=startTime, listName="章", listNums=listNums)
+    plan_name = input("任务名：")
+    start_time = input("开始时间（2020-01-02）:")
+    list_nums = int(input("章节数目："))
+    tool.add_plan(plan_name=plan_name, start_time=start_time, list_name="章", list_nums=list_nums)
     print("添加成功！")
 
 
@@ -24,10 +24,10 @@ def delay_plan_3(tool):
     elif num == 1:
         plan_name = input("任务名：")
         this_time = int(input("推迟时间指定(若为当天设为0，昨天为-1，明天为1):"))
-        tool.delay_plan(planName=plan_name, nowTime=this_time)
+        tool.delay_plan(plan_name=plan_name, now_time=this_time)
     elif num == 2:
         this_time = int(input("推迟时间指定(若为当天设为0，昨天为-1，明天为1):"))
-        tool.delay_all_plan(nowTime=this_time)
+        tool.delay_all_plan(now_time=this_time)
     print("推迟成功！")
 
 
@@ -43,17 +43,17 @@ def forward_plan_4(tool):
     elif num == 1:
         plan_name = input("任务名：")
         this_time = int(input("提前时间指定(若为当天设为0，昨天为-1，明天为1):"))
-        tool.forward_plan(planName=plan_name, nowTime=this_time)
+        tool.forward_plan(plan_name=plan_name, now_time=this_time)
     elif num == 2:
         this_time = int(input("提前时间指定(若为当天设为0，昨天为-1，明天为1):"))
-        tool.forward_all_plan(nowTime=this_time)
+        tool.forward_all_plan(now_time=this_time)
 
 
 def insert_list_5(tool):
     plan_name = input("任务名称:")
     tool.look_plan(plan_name)
     list_num = int(input("添加章节数:"))
-    tool.insert_list(planName=plan_name, listNum=list_num)
+    tool.insert_list(plan_name=plan_name, list_num=list_num)
     print("添加成功！")
 
 
@@ -61,13 +61,13 @@ def delete_list_6(tool):
     plan_name = input("任务名称:")
     tool.look_plan(plan_name)
     list_num = int(input("删除章节数:"))
-    tool.delete_list(planName=plan_name, listNum=list_num)
+    tool.delete_list(plan_name=plan_name, list_num=list_num)
     print("删除成功！")
 
 
 def look_plan_7(tool):
     plan_name = input("任务名称:")
-    tool.look_plan(planName=plan_name)
+    tool.look_plan(plan_name=plan_name)
 
 
 def print_menu():
