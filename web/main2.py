@@ -12,15 +12,17 @@ from flask import Flask, make_response, jsonify, redirect, abort
     request.url: 完整请求路径, 是不是可以修改路径
     request.method: 请求方法类型，是不是可以根据方法类型调用不同的操作
     request.remote_addr: 远程地址, 是不是可以作为防火墙
-    request.args: url参数, 是不是可以获取post里的参数
+    request.args: 获取get请求参数
+    request.json: 获取post请求的参数
     request.header: header信息, 是否可以添加授权信息
     request.cookie.get: 缓存获取, 可用于记录客户端通用信息
     
-    @app.route('/') 请求钩子装饰器
+    @app.route('/') 请求钩子装饰器, 一个函数可绑定多个@app.route
     before_first_request: 第一次请求之前, 是否可以作为防火墙验证, cookie和session的建立
     before_request: 每次请求之前, 授权信息验证, cookie和session的获取
     app.after_request: 没有异常, 每次请求之后。是否可以作为日志记录
     app.teardown_request: 有异常也会运行, 每次请求结束后。可作为异常日志记录
+    app.route('/', methods=["GET", "POST"]) 默认GET请求, 可允许不同请求
     
     @app.route('/<param>') 带参数的装饰器
     默认为str类型, 可指定（int, float, path）-> /<int:param>。 可用于快速获取url上的信息

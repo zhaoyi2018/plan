@@ -91,6 +91,9 @@ class Plan:
                     plan_arr.append(j + 1)
 
         # 输出计划
+        plan_list = []
         print("{}，今日需完成目标:".format(self.plan_name))
         for i in range(len(plan_arr)):
+            plan_list.append((self.list_name, plan_arr[i]))
             print("{} {}".format(self.list_name, plan_arr[i]))
+        return {self.plan_name: plan_list}

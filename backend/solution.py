@@ -32,14 +32,18 @@ class Solution:
         return [i[:-4] for i in os.listdir(self.file_path + "/list/") if ".pkl" in i]
 
     def today_all_task(self, diff=None):
+        res = {}
         all_plan = self.get_all_plan()
-        print("时间点：", datetime.now())
+        res["datetime"] = datetime.now()
+        print("时间点：", res["datetime"])
+        res["plans"] = {}
         for i in all_plan:
             plan = self.read_plan(i)
             if diff:
-                plan.get_look(diff_day=diff)
+                res["plans"] = res["plans"].update(plan.get_look(diff_day=diff))
             else:
-                plan.get_look()
+                res["plans"] = res["plans"].update(plan.get_look())
+        return res
 
     def add_plan(self, plan_name='Plan', start_time=str(datetime.today()).split(" ")[0], list_name="plan", day_list=1,
                  list_nums=7):

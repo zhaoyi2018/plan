@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>我的计划</title>
+  <script src="../static/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<!--  <h1>心灵再慢一点，动手再做一点！</h1>-->
+  {% for index, name in menu_list %}
+  <h2 class="menu_item" onclick="testUrl()">{{ index }}, {{ name }}</h2>
+  {% endfor %}
+</body>
+<style type="text/css">
+.menu_item{
+  cursor: pointer;
+}
+</style>
+<script>
+  function request(url, type, data, contentType) {
+    $.ajax({
+      url: url,
+      type: type,
+      data: data,
+      dataType: "json",
+      contentType: contentType,
+      success: function (data){
+        return data;
+      },
+      error: function (msg){
+        return msg;
+      }
+    });
+  }
+  function get(url, data) {
+    return request(url, 'get', data, 'text/html')
+  }
+  function post(url, data) {
+    return request(url, 'post', JSON.stringify(data), 'application/json')
+  }
+  function testUrl() {
+    post('/create_new_plan', {"test": [1,2]})
+    get('/create_new_plan', {"test": [1,2]})
+  }
+</script>
+<html>
