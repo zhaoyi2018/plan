@@ -20,16 +20,19 @@ def query_all_list():
 
 
 # 创建任务
-@app.route('/create_new_plan', methods=["GET", "POST"])
+@app.route('/create_new_plan', methods=["POST"])
 def create_new_plan():
     params = request.json
-    print(params)
-    return success(service.create_new_plan(), res_type="json")
+    plan_name = params["plan_name"]
+    start_time = params["start_time"]
+    list_nums = params["list_nums"]
+    return success(service.create_new_plan(plan_name, start_time, list_nums), res_type="json")
 
 
 # 推迟任务
-@app.route('/delay_plan')
+@app.route('/delay_plan', methods=["POST"])
 def delay_plan():
+    params = request.json
     return success(service.delay_plan(), res_type="json")
 
 

@@ -17,18 +17,14 @@
 </style>
 <script>
   function request(url, type, data, contentType) {
-    $.ajax({
+    return $.ajax({
       url: url,
       type: type,
       data: data,
       dataType: "json",
-      contentType: contentType,
-      success: function (data){
-        return data;
-      },
-      error: function (msg){
-        return msg;
-      }
+      contentType: contentType
+    }).fail(function(xhr, status, error){
+      alert("Error: " + error);
     });
   }
   function get(url, data) {
@@ -38,8 +34,10 @@
     return request(url, 'post', JSON.stringify(data), 'application/json')
   }
   function testUrl() {
-    post('/create_new_plan', {"test": [1,2]})
-    get('/create_new_plan', {"test": [1,2]})
+    post('/create_new_plan', {"plan_name": "test", "start_time": "2023-11-25", "list_nums": 4}).done(res => {
+      console.log(res);
+    });
+
   }
 </script>
 <html>

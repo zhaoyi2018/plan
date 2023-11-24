@@ -1,4 +1,3 @@
-from datetime import datetime
 from backend.solution import Solution
 
 tool = Solution()
@@ -18,12 +17,20 @@ def query_all_list():
     return tool.today_all_task()
 
 
-def create_new_plan():
-    return None
+def create_new_plan(plan_name, start_time, list_nums):
+    if tool.add_plan(plan_name=plan_name, start_time=start_time, list_name="章", list_nums=list_nums):
+        return {'msg': '创建成功!'}
+    else:
+        return {'msg': '创建失败!'}
 
 
-def delay_plan():
-    return None
+def delay_plan(num, this_time, plan_name=None):
+    if num == 1 and tool.delay_plan(plan_name=plan_name, now_time=this_time):
+        return {'msg': '推迟成功！'}
+    elif num == 2 and tool.delay_all_plan(now_time=this_time):
+        return {'msg': '推迟成功！'}
+    else:
+        return {'msg': '推迟失败!'}
 
 
 def speed_up_plan():

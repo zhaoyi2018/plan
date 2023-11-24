@@ -49,11 +49,13 @@ class Solution:
                  list_nums=7):
         new_plan = Plan(plan_name, start_time, list_name, day_list, list_nums)
         self.save_plan(new_plan)
+        return True
 
     def delay_plan(self, plan_name, now_time=0):
         plan = self.read_plan(plan_name)
         plan.to_delay(now_time)
         self.save_plan(plan)
+        return True
 
     def delay_all_plan(self, now_time=0):
         all_plan = self.get_all_plan()
